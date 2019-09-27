@@ -4,7 +4,7 @@ const jwt=require('jsonwebtoken');
          const token=req.headers.authorization.split(" ")[1];
         
          const decodedToken=jwt.verify(token,"this_is_secret");
-         req.userData={name:decodedToken.name,id:decodedToken.id};
+         req.userData={email:decodedToken.email,id:decodedToken.id};
          next();
      }
 catch(err){

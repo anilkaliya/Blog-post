@@ -8,15 +8,15 @@ Router.post("/signup",(req,res,next)=>{
     bcrypt.hash(req.body.password,10).then((hash)=>
     {
         const user=new User({
-            name:req.body.name,
+           email:req.body.email,
             password:hash
         });
         user.save().then(data=>{
             console.log("data saved");
-            return res.status(201).json({message:"done"})
+            return res.status(201).json({message:"Done"})
         }).catch(err=>{
             console.log(err);
-           return res.status(201).json({message:err});
+           return res.status(201).json({error:err});
         });
     
     });
@@ -25,7 +25,7 @@ Router.post("/signup",(req,res,next)=>{
 });
 Router.post("/signin",(req,res,next)=>{
     let fetchedUser
-    User.findOne({name:req.body.name}).
+    User.findOne({email:req.body.email}).
     then(user=>{
         if(!user){
             console.log("this fails");
@@ -39,7 +39,7 @@ Router.post("/signin",(req,res,next)=>{
             console.log("that fails");
             return res.status(404).json({message:"Auth failed"});
         }
-       const token= jwt.sign({name:fetchedUser.name,id:fetchedUser._id},
+       const token= jwt.sign({email:fetchedUser.email,id:fetchedUser._id},
             "this_is_secret",{expiresIn:"1h"});
             res.status(200).json({
                 token: token,

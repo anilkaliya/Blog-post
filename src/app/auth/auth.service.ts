@@ -18,22 +18,26 @@ private token:string;
 private isAuthenticated=false;
 private isAuthListener=new Subject<boolean>();
   constructor(private http:HttpClient,private router:Router) { }
-  SignUp(name:string,password:string){
-    const authData:AuthData={name:name,password:password};
-    this.http.post<{message:string}>( "/api/users/signup" ,authData).
+  SignUp(email:string,password:string){
+    const authData:AuthData={email:email,password:password};
+    this.http.post<{message:string}>( "http://localhost:3000/api/users/signup" ,authData).
     subscribe(responseData=>{
-      console.log("signup done");
-      this.router.navigate(['/']);
-
-    });
+      console.log(responseData);
+      if(responseData.message==='Done'){
+        this.router.navigate(['/signin'],{queryParams:{registered:'true'}})
+      }
+      else{
+        this.router.navigate(['/signup'],{queryParams:{registered:'false'}})
+      }
+     });
 
 
   }
-  SignIn(name:string,password:string){
-    const authData:AuthData={name:name,password:password};
+  SignIn(email:string,password:string){
+    const authData:AuthData={email:email,password:password};
 
     this.http.post<{token:string,Message:string}>
-    ("/api/users/signin",authData)
+    ("http://localhost:3000/api/users/signin",authData)
     .subscribe(responseData=>{
       console.log("done");
       const token=responseData.token;

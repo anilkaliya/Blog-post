@@ -9,13 +9,21 @@ const postsRoutes = require("./routes/posts");
 //"mongodb://anil:ashok@UR123@ds259586.mlab.com:59586/heroku_5h370ddf"
 const app = express();
 mongoose
-  .connect("mongodb://anil:ashok@UR123@ds011248.mlab.com:11248/heroku_c9vg63bf")
+  .connect("mongodb://localhost:27017/myapp")
   .then(() => {
     console.log("Connected to database!");
   })
   .catch(() => {
     console.log("Connection failed!");
   });
+// mongoose
+//   .connect("mongodb://anil:ashok@UR123@ds011248.mlab.com:11248/heroku_c9vg63bf")
+//   .then(() => {
+//     console.log("Connected to database!");
+//   })
+//   .catch(() => {
+//     console.log("Connection failed!");
+//   });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

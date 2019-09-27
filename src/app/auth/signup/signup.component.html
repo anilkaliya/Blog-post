@@ -1,15 +1,17 @@
+<span *ngIf="message.length>0"> {{message}}</span>
 <mat-card>
-  <form [formGroup]="form" (submit)="onSignUp()">
-  <mat-form-field>
-  <input matInput placeholder="name" formControlName="name">
-  
-  
+  <form (submit)="onSignUp(signupForm)" #signupForm="ngForm" >
+    <mat-form-field>
+    <input matInput name="email" ngModel type="email" #emailInput="ngModel"  placeholder="*Email" required minlength="4">
+    <mat-error *ngIf="emailInput.invalid">Please enter a valid and unique Email.</mat-error>
+
   </mat-form-field>
   <mat-form-field>
-    <input type="password" matInput placeholder="passsword" formControlName="password">
-    </mat-form-field>
+    <input matInput name="password" ngModel type="password" placeholder="password" #password="ngModel" required minlength="6" >
+    <mat-error *ngIf="password.invalid">Please enter a valid password.</mat-error>
+  
+  </mat-form-field>
     <button mat-raised-button color="accent" type="submit">SignUp</button>
   
   </form>
-
-  </mat-card>
+</mat-card>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm} from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -8,20 +9,23 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-form:FormGroup;
-  constructor(private authservice:AuthService) {
-   
-   }
+ private message='';
+  constructor(private authservice:AuthService,private route:ActivatedRoute) {
+
+  }
 
   ngOnInit() {
-    this.form =new FormGroup({
-      name:new FormControl(null,{validators:[Validators.required,Validators.minLength(4)]}),
-      password:new FormControl(null,{validators:[Validators.required, Validators.minLength(10)]})
-      });
+    this.route.queryParams.subscribe(params=>{
+      if(params.registered!==undefined && params.registered==='false')
+      this.message="Uh Oh Please Enter Valid Credentials";
+    })
+    
   }
-  onSignUp()
-    {
-this.authservice.SignUp(this.form.value.name,this.form.value.password);
+  onSignUp(form:NgForm){
+    if(form.invalid){
+      return;
+    }
+    this.authservice.SignUp(form.value.email,form.value.password);
     }
   
 
