@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { AuthData } from './authData.model';
-import { stringify } from '@angular/core/src/render3/util';
 import { Subscription, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from "../../environments/environment.prod";
