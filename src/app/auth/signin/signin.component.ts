@@ -21,7 +21,6 @@ private message='';
     if(form.invalid){
       return;
 }
-console.log(form.value.email);
     this.authService.SignIn(form.value.email,form.value.password);
   }
 
