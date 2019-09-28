@@ -29,23 +29,29 @@ private isAuthListener=new Subject<boolean>();
         this.router.navigate(['/signup'],{queryParams:{registered:'false'}})
       }
      });
-
-
-  }
+    }
   SignIn(email:string,password:string){
     const authData:AuthData={email:email,password:password};
 
-    this.http.post<{token:string,Message:string}>
+    this.http.post<{message:String,token:string,expiresIn:string}>
     ("http://localhost:3000/api/users/signin",authData)
     .subscribe(responseData=>{
-      console.log("done");
       const token=responseData.token;
       this.token=token;
+      console.log(token);
       if(token){
         this.isAuthenticated=true;
         this.isAuthListener.next(true);
         this.router.navigate(['/']);
       }
+      else if(responseData.message==='Does not exist'){
+        this.router.navigate(['/signin'],{queryParams:{User:'false'}
+        })
+      }
+      else if( responseData.message==='Password is wrong'){
+        this.router.navigate(['/signin'],{queryParams:{password:'false'}
+      })
+    }
       
     })
   }

@@ -8,7 +8,7 @@ Router.post("/signup",(req,res,next)=>{
     bcrypt.hash(req.body.password,10).then((hash)=>
     {
         const user=new User({
-           email:req.body.email,
+            email:req.body.email,
             password:hash
         });
         user.save().then(data=>{
@@ -16,7 +16,7 @@ Router.post("/signup",(req,res,next)=>{
             return res.status(201).json({message:"Done"})
         }).catch(err=>{
             console.log(err);
-           return res.status(201).json({error:err});
+           return res.status(404).json({error:err});
         });
     
     });
@@ -29,25 +29,24 @@ Router.post("/signin",(req,res,next)=>{
     then(user=>{
         if(!user){
             console.log("this fails");
-           return res.status(404).json({message:"Authentication failed"});
-           
+           return res.json({message:"Does not exist"});
         }
          fetchedUser=user;
         return bcrypt.compare(req.body.password,user.password);
     }).then(result=>{
         if(!result){
             console.log("that fails");
-            return res.status(404).json({message:"Auth failed"});
+            return res.json({message:"Password is wrong"});
         }
        const token= jwt.sign({email:fetchedUser.email,id:fetchedUser._id},
             "this_is_secret",{expiresIn:"1h"});
-            res.status(200).json({
+            res.status(200).json({message:"success",
                 token: token,
                 expiresIn: 3600
               });
     }).catch(err=>{
         console.log("here fails");
-        res.status(404).json({message:"auth failed"});
+        res.status(404).json({message:"Authentication failed"});
     })
 })
 module.exports=Router;

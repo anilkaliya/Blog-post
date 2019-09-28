@@ -13,9 +13,19 @@ private message='';
 
   ngOnInit() {
     this.route.queryParams.subscribe(params=>{
-      if(params.registered!==undefined && params.registered==='true')
-      this.message="You have registered !! Please proceed to signin";
-    })
+      console.log(params);
+      if(params.registered!==undefined && params.registered==='true'){
+        this.message="You have registered !! Please proceed to signin";
+      }
+      else if(params.User!==undefined && params.User==='false'){
+        this.message="User Does not exist";
+      }
+      else if(params.password!==undefined && params.password==='false'){
+        this.message="Please enter correct password";
+      }
+    });
+    
+ 
   }
   onSignIn(form:NgForm){
     if(form.invalid){
