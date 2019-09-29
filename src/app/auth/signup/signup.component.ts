@@ -16,8 +16,13 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params=>{
-      if(params.registered!==undefined && params.registered==='false')
+     if(params.registered!==undefined && params.registered==='false')
       this.message="Uh Oh Please Enter Valid Credentials";
+      else if(params.User!==undefined && params.User==='false'){
+        this.message="User Already Exists";
+      }
+     
+
     })
     
   }

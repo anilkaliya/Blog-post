@@ -15,8 +15,7 @@ Router.post("/signup",(req,res,next)=>{
             console.log("data saved");
             return res.status(201).json({message:"Done"})
         }).catch(err=>{
-            console.log(err);
-           return res.json({error:err});
+           return res.json({message:err._message});
         });
     
     });

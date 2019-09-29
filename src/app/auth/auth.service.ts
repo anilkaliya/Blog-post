@@ -19,14 +19,18 @@ private isAuthListener=new Subject<boolean>();
   constructor(private http:HttpClient,private router:Router) { }
   SignUp(email:string,password:string){
     const authData:AuthData={email:email,password:password};
-    this.http.post<{message:string}>( "/api/users/signup" ,authData).
+    this.http.post<{message:string}>( "http://localhost:3000/api/users/signup" ,authData).
     subscribe(responseData=>{
-      console.log(responseData);
+      console.log(responseData.message);
+   
       if(responseData.message==='Done'){
         this.router.navigate(['/signin'],{queryParams:{registered:'true'}})
       }
-      else{
-        this.router.navigate(['/signup'],{queryParams:{registered:'false'}})
+      else if(responseData.message==="User validation failed"){
+        this.router.navigate(['/signup'],{queryParams:{User:'false'}})
+      }
+      else {
+        this.router.navigate(['/signup'],{queryParams:{regiesterd:'false'}})
       }
      });
     }
@@ -34,7 +38,7 @@ private isAuthListener=new Subject<boolean>();
     const authData:AuthData={email:email,password:password};
 
     this.http.post<{message:String,token:string,expiresIn:string}>
-    ("/api/users/signin",authData)
+    ("http://localhost:3000/api/users/signin",authData)
     .subscribe(responseData=>{
       const token=responseData.token;
       this.token=token;
