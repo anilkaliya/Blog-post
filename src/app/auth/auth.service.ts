@@ -19,7 +19,7 @@ private isAuthListener=new Subject<boolean>();
   constructor(private http:HttpClient,private router:Router) { }
   SignUp(email:string,password:string){
     const authData:AuthData={email:email,password:password};
-    this.http.post<{message:string}>( "http://localhost:3000/api/users/signup" ,authData).
+    this.http.post<{message:string}>( "/api/users/signup" ,authData).
     subscribe(responseData=>{
       console.log(responseData);
       if(responseData.message==='Done'){
@@ -34,7 +34,7 @@ private isAuthListener=new Subject<boolean>();
     const authData:AuthData={email:email,password:password};
 
     this.http.post<{message:String,token:string,expiresIn:string}>
-    ("http://localhost:3000/api/users/signin",authData)
+    ("/api/users/signin",authData)
     .subscribe(responseData=>{
       const token=responseData.token;
       this.token=token;
