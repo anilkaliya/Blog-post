@@ -16,7 +16,7 @@ Router.post("/signup",(req,res,next)=>{
             return res.status(201).json({message:"Done"})
         }).catch(err=>{
             console.log(err);
-           return res.status(404).json({error:err});
+           return res.json({error:err});
         });
     
     });
