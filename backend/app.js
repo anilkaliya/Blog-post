@@ -9,7 +9,7 @@ const postsRoutes = require("./routes/posts");
 const app = express();
 
 mongoose
-  .connect("mongodb://anil:ashok@UR123@ds011248.mlab.com:11248/heroku_c9vg63bf")
+  .connect(process.env.MongoDB_URI)
   .then(() => {
     console.log("Connected to database!");
   })
