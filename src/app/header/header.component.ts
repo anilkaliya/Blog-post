@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { DialogComponent } from '../auth/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,10 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService,public dialog: MatDialog) { }
  isAuthenticated=false;
  isAuthListenSub:Subscription;
+ message="";
   ngOnInit() {
     this.isAuthenticated=this.authService.getIsAuth();
     this.isAuthListenSub=this.authService.getIsAuthListener().
@@ -21,6 +24,16 @@ export class HeaderComponent implements OnInit {
   }
   onlogout(){
     this.authService.Logout();
+    this.message="You have been loggged out!";
+      const dialogRef = this.dialog.open(DialogComponent, {
+        width: '250px',
+        data: {message: this.message }
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+       
+      });
   }
 
 }

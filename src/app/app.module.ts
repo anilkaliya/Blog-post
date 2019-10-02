@@ -9,7 +9,8 @@ import { PostListComponent } from './post-list/post-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule, MatFormFieldControl} from '@angular/material/form-field';
-
+import {MatDialogModule} from '@angular/material/dialog'; 
+import { DialogComponent } from './auth/dialog/dialog.component';
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -29,7 +30,8 @@ import {
     PostCreateComponent,
     PostListComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +46,14 @@ import {
     MatFormFieldModule,
     MatCardModule,
     HttpClientModule,
-    MatExpansionModule
-  
+    MatExpansionModule,
+    MatDialogModule
 
   ],
+  entryComponents: [
+    DialogComponent
+  ],
+
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
