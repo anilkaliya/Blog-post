@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   }
   onlogout(){
     this.authService.Logout();
-    this.message="You have been loggged out!";
+    this.message="You have loggged out!";
       const dialogRef = this.dialog.open(DialogComponent, {
         width: '250px',
         data: {message: this.message }
