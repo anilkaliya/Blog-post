@@ -20,7 +20,8 @@ import {
   MatCardModule,
   MatButtonModule,
   MatToolbarModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSidenavModule
 } from "@angular/material";
 
 @NgModule({
@@ -47,7 +48,8 @@ import {
     MatCardModule,
     HttpClientModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
 
   ],
   entryComponents: [

@@ -2,7 +2,7 @@
   <span><a mat-button routerLink= "">MyPosts</a></span>
   <span class="spacer"></span>
    <ul>
-    <li *ngIf="isAuthenticated"> <a mat-button routerLink="api/posts" routerLinkActive="mat-accent">Add post</a></li>
+    <li *ngIf="isAuthenticated"> <a mat-button routerLink="api/posts" routerLinkActive="mat-accent">Add Post</a></li>
     <li *ngIf="isAuthenticated"> <a mat-button (click)="onlogout()" routerLinkActive="mat-accent">Log Out</a></li>
 
      <li *ngIf="!isAuthenticated"> <a mat-button routerLink="signup" routerLinkActive="mat-accent">SignUp</a></li>
