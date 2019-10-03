@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+const movieRoutes = require("./routes/movie");
 const postsRoutes = require("./routes/posts");
  const userRoutes = require("./routes/users");
 
@@ -47,5 +47,5 @@ app.use((req, res, next) => {
 
   app.use("/api/posts", postsRoutes);
   app.use("/api/users", userRoutes);
-
+  app.use("/api/movies",movieRoutes);
   module.exports = app;

@@ -2,7 +2,7 @@
     display: block;
     margin-top: 1rem;
   }
-  
+
   mat-spinner {
     margin: auto;
   }
@@ -19,13 +19,24 @@
     width: 50%;
     text-align: center;
   }
+   .apiposts{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
   
   .post-image img {
     width: 100%;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     
   }
-  
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
   .image{
     text-align:center;
     width:80%;

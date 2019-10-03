@@ -12,12 +12,19 @@ import { AuthService } from '../auth/auth.service';
 export class PostListComponent implements OnInit {
  postSub:Subscription;
  posts:Post[]=[];
-isAuthenticated=false;
+ movieArray:any;
+ isAuthenticated=false;
  authSub:Subscription;
+ private imageUrl="http://image.tmdb.org/t/p/w300";
   constructor(private postService:PostService,private authService:AuthService) { }
 
   ngOnInit() {
     this.postService.getPosts();
+    this.postService.getList().subscribe(data=>{
+      this.movieArray=data;
+    })
+     
+    
     this.postSub=this.postService.getPostUpdateListener().
     subscribe(postData=>{
       this.posts=postData.posts;

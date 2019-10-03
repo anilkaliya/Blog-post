@@ -2,6 +2,7 @@
 <div class="image">
   <img src="../../../assets/img/list.jpg" alt="">
 </div>
+
 <mat-accordion  *ngIf="posts.length > 0 ">
   <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
@@ -19,4 +20,20 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+
+ 
+<mat-accordion  *ngIf="movieArray.length > 0 ">
+  <mat-expansion-panel *ngFor="let movie of movieArray">
+    <mat-expansion-panel-header>
+      {{ movie.original_title }}
+    </mat-expansion-panel-header>
+    <div class="post-image">
+        <img [src]="imageUrl+movie.poster_path" alt="movie.original_title">
+     
+    </div>    
+    <p>{{ movie.overview }}</p>
+   
+  </mat-expansion-panel>
+</mat-accordion>
+
 </div>

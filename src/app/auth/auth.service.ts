@@ -42,7 +42,7 @@ private isAuthListener=new Subject<boolean>();
     .subscribe(responseData=>{
       const token=responseData.token;
       this.token=token;
-      console.log(token);
+      
       if(token){
         this.isAuthenticated=true;
         this.isAuthListener.next(true);

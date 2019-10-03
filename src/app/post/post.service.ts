@@ -85,4 +85,9 @@ console.log(post);
 imagePath:string}>
   ("/api/posts/" +id);
   }
+  getList(){
+    
+      return this.http.get("/api/movies")
+  
+}
 }
