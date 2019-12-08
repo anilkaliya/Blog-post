@@ -1,61 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { PostCreateComponent } from './post/post-create/post-create.component';
-import { PostListComponent } from './post-list/post-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule, MatFormFieldControl} from '@angular/material/form-field';
-import {MatDialogModule} from '@angular/material/dialog'; 
-import { DialogComponent } from './auth/dialog/dialog.component';
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
-import { SigninComponent } from './auth/signin/signin.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import {AuthInterceptor} from './auth/auth-interceptors';
-import {
-  MatInputModule,
-  MatCardModule,
-  MatButtonModule,
-  MatToolbarModule,
-  MatExpansionModule,
-  MatSidenavModule
-} from "@angular/material";
+import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { PostModule } from './post/post.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    PostCreateComponent,
-    PostListComponent,
-    SigninComponent,
-    SignupComponent,
-    DialogComponent
-  ],
+    HeaderComponent
+ ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    MatToolbarModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatCardModule,
     HttpClientModule,
-    MatExpansionModule,
-    MatDialogModule,
-    MatSidenavModule
-
-  ],
-  entryComponents: [
-    DialogComponent
-  ],
-
+    AngularMaterialModule,
+	PostModule,
+	AppRoutingModule
+],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
