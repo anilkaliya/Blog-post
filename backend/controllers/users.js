@@ -1,11 +1,10 @@
-const userController=('../controllers/users');
-const express =require('express');
-const router=express.Router();
 const User=require('../models/users');
 const jwt=require('jsonwebtoken');
 const bcrypt=require('bcrypt');
 
-router.post('/signup',(req,res,next)=>{
+   
+    
+exports.createUser=function(req,res,next){
     bcrypt.hash(req.body.password,10).then((hash)=>
     {
         const user=new User({
@@ -22,8 +21,9 @@ router.post('/signup',(req,res,next)=>{
         });
     
     });
-});
-router.post('/signin',(req,res,next)=>{
+};
+
+exports.userLogin=function(req,res,next){
     let fetchedUser
     User.findOne({email:req.body.email}).
     then(user=>{
@@ -48,7 +48,7 @@ router.post('/signin',(req,res,next)=>{
         console.log("here fails");
         res.status(404).json({message:"Authentication failed"});
     })
-});
-
-
-module.exports = router;
+};
+exports.message=(req,res,next)=>{
+    res.status(404).json({message:"Authentication failed"});
+};

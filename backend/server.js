@@ -42,10 +42,12 @@ const http = require("http");
 //   const bind = typeof addr === "string" ? "pipe " + addr : "port " + port;
 //   debug("Listening on " + bind);
 // };
-const port=process.env.PORT||3000;
+const port=3000;
 app.set( 'port', port );
 
 const server = http.createServer(app);
 // server.on("error", onError);
 // server.on("listening", onListening);
-server.listen(port);
+server.listen(port,()=>{
+    console.log(`connected to server on port ${port}`);
+});

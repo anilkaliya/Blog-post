@@ -5,8 +5,8 @@
     <li *ngIf="isAuthenticated"> <a mat-button routerLink="api/posts" routerLinkActive="mat-accent">New Movie</a></li>
     <li *ngIf="isAuthenticated"> <a mat-button (click)="onlogout()" routerLinkActive="mat-accent">Log Out</a></li>
 
-     <li *ngIf="!isAuthenticated"> <a mat-button routerLink="signup" routerLinkActive="mat-accent">SignUp</a></li>
-     <li *ngIf="!isAuthenticated"> <a mat-button routerLink="signin" routerLinkActive="mat-accent">SigIn</a></li>
+     <li *ngIf="!isAuthenticated"> <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">SignUp</a></li>
+     <li *ngIf="!isAuthenticated"> <a mat-button routerLink="/auth/signin" routerLinkActive="mat-accent">SigIn</a></li>
 
     </ul>
 </mat-toolbar>
