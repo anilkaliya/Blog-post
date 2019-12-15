@@ -8,6 +8,7 @@ import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './auth/auth-interceptors';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { PostModule } from './post/post.module';
+import { ErrorInterceptor } from './error-interceptors';
 
 
 @NgModule({
@@ -20,11 +21,13 @@ import { PostModule } from './post/post.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
-	PostModule,
-	AppRoutingModule
+	  PostModule,
+	  AppRoutingModule
 ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+
   ],
   bootstrap: [AppComponent]
 })

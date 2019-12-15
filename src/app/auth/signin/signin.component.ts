@@ -28,34 +28,8 @@ private message='';
          
         });
       }
-      else if(params.User!==undefined && params.User==='false'){
-        this.message="User Does not exist";
-        const dialogRef = this.dialog.open(DialogComponent, {
-          width: '250px',
-          data: {message: this.message }
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
-         
-        });
-      }
-      else if(params.password!==undefined && params.password==='false'){
-        this.message="Please enter correct password";
-        const dialogRef = this.dialog.open(DialogComponent, {
-          width: '250px',
-          data: {message: this.message }
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
-         
-        });
-      }
     });
-    
- 
-  }
+    }
   onSignIn(form:NgForm){
     if(form.invalid){
       return;

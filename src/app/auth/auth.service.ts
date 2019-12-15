@@ -21,17 +21,14 @@ private isAuthListener=new Subject<boolean>();
     const authData:AuthData={email:email,password:password};
     this.http.post<{message:string}>( "http://localhost:3000/api/users/signup" ,authData).
     subscribe(responseData=>{
-      console.log(responseData.message);
+     
    
       if(responseData.message==='Done'){
         this.router.navigate(['auth/signin'],{queryParams:{registered:'true'}})
-      }
-      else if(responseData.message==="User validation failed"){
-        this.router.navigate(['auth/signup'],{queryParams:{User:'false'}})
-      }
-      else {
-        this.router.navigate(['auth/signup'],{queryParams:{regiesterd:'false'}})
-      }
+      
+     }
+    },error=>{
+               this.router.navigate(['auth/signup'],{queryParams:{regiesterd:'false'}});
      });
     }
   SignIn(email:string,password:string){
@@ -49,15 +46,17 @@ private isAuthListener=new Subject<boolean>();
         this.isAuthListener.next(true);
         this.router.navigate(['/']);
       }
-      else if(responseData.message==='Does not exist'){
-        this.router.navigate(['auth/signin'],{queryParams:{User:'false'}
-        })
-      }
-      else if( responseData.message==='Password is wrong'){
-        this.router.navigate(['auth/signin'],{queryParams:{password:'false'}
-      })
-    }
+    //   else if(responseData.message==='Does not exist'){
+    //     this.router.navigate(['auth/signin'],{queryParams:{User:'false'}
+    //     })
+    //   }
+    //   else if( responseData.message==='Password is wrong'){
+    //     this.router.navigate(['auth/signin'],{queryParams:{password:'false'}
+    //   })
+    // }
       
+    },error=>{
+      // this.router.navigate(['auth/signin']);
     })
   }
   getIsAuth(){

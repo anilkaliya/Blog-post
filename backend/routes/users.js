@@ -17,8 +17,9 @@ router.post('/signup',(req,res,next)=>{
             console.log("data saved");
             return res.status(201).json({message:"Done"})
         }).
-        catch(err=>{
-           return res.json({message:err._message});
+        catch(error=>{
+           console.log(error.message);
+           res.status(500).json({error:error});
         });
     
     });
@@ -28,15 +29,13 @@ router.post('/signin',(req,res,next)=>{
     User.findOne({email:req.body.email}).
     then(user=>{
         if(!user){
-            console.log("this fails");
-           return res.json({message:"Does not exist"});
-        }
+            res.status(401).json({message:"User Does not Exist"});        }
          fetchedUser=user;
-        return bcrypt.compare(req.body.password,user.password);
+        return bcrypt.compare(req.body.password,user.password)
     }).then(result=>{
         if(!result){
             console.log("that fails");
-            return res.json({message:"Password is wrong"});
+            res.status(401).json({message:"Password is wrong"});
         }
        const token= jwt.sign({email:fetchedUser.email,id:fetchedUser._id},
             "this_is_secret",{expiresIn:"1h"});
@@ -46,7 +45,8 @@ router.post('/signin',(req,res,next)=>{
               });
     }).catch(err=>{
         console.log("here fails");
-        res.status(404).json({message:"Authentication failed"});
+        console.log(err);
+        res.status(401).json({message:"Invalid authentication credentials!"});
     })
 });
 
