@@ -5,4 +5,36 @@ mat-form-field {
   mat-spinner {
     margin: auto;
   }
-  
+  .flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    width: 100%;
+    margin: 5px;
+    background-image: url('/../../../src/assets/img/netflix.jpg');
+    background-repeat: repeat-y;
+   }
+   /* body{
+   background-image: ('/assets/img/netflix.jpg');
+   height: 100%;
+   background-repeat: repeat-y;
+   } */
+
+ mat-card {
+  display: flex;
+  background-color:#b48989;
+  justify-content: center;
+  align-items: flex-end;
+  height: 250px;
+}
+
+button{
+  width: 100%;
+}
+h1{
+  text-align: center;
+  color: black;
+}
+
+

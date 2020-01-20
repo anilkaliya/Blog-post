@@ -1,9 +1,9 @@
+<div class="flex-container">
 <mat-card>
 <form [formGroup]="form" (submit)="onAddPost()" enctype="multipart/form-data">
+  <h1>Add Any Movie Review</h1>
 <mat-form-field>
 <input matInput placeholder="movie_title" formControlName="title">
-
-
 </mat-form-field>
 <div>
   <button mat-stroked-button type="button" (click)="filePicker.click()">Movie Image</button>
@@ -19,3 +19,4 @@
 
 </form>
 </mat-card>
+</div>

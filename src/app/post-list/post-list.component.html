@@ -1,39 +1,31 @@
-<div class="list">
-<div class="image">
-  <img src="../../../assets/img/list.jpg" alt="">
-</div>
-
-<mat-accordion  *ngIf="posts.length > 0 ">
-  <mat-expansion-panel *ngFor="let post of posts">
-    <mat-expansion-panel-header>
-      {{ post.title }}
-    </mat-expansion-panel-header>
+<div class="posts" *ngIf="posts.length > 0 ">
+  <div class="one-post" *ngFor="let post of posts">
+    <div class="title">
+    <strong>{{ post.title }}</strong>
+    </div>
     <div class="post-image">
       <img [src]="post.imagePath" [alt]="post.title">
     </div>    
-    <p>{{ post.content }}</p>
-    
-
+    <div>{{ post.content }}</div>
+ 
     <mat-action-row *ngIf="isAuthenticated">
       <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
       <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
     </mat-action-row>
-  </mat-expansion-panel>
-</mat-accordion>
-
- 
-<mat-accordion  *ngIf="movieArray.length > 0 ">
-  <mat-expansion-panel *ngFor="let movie of movieArray">
-    <mat-expansion-panel-header>
-      {{ movie.original_title }}
-    </mat-expansion-panel-header>
-    <div class="post-image">
-        <img [src]="imageUrl+movie.poster_path" alt="movie.original_title">
-     
-    </div>    
-    <p>{{ movie.overview }}</p>
-   
-  </mat-expansion-panel>
-</mat-accordion>
-
+  </div>
 </div>
+
+<div class="movies" *ngIf="movieArray.length > 0 ">
+  <div class="one-movie" *ngFor="let movie of movieArray">
+    <div class="title">
+      <strong>{{ movie.original_title }}</strong>
+    </div>
+    <div class="post-image">
+    <img [src]="imageUrl+movie.poster_path" alt="movie.original_title">
+     </div>    
+    <div>{{ movie.overview }}</div>
+  </div>
+</div>
+
+
+

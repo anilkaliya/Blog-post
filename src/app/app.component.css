@@ -1,5 +1,10 @@
 
 main {
-    width: 80%;
-    margin: 1rem auto;
+    width: 100%;
+    height: fit-content;
   }
+  main{
+    background-image: url('../../../assets/img/background.jpeg');
+    background-repeat: repeat-y;
+ 
+}

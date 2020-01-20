@@ -1,13 +1,23 @@
-<span *ngIf="message.length>0"> {{message}}</span>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body> 
+<div class="flex-container">
 <mat-card>
+ 
   <form (submit)="onSignIn(signinForm)" #signinForm="ngForm" >
+    <h1> Sign In
+    </h1>
     <mat-form-field>
+     
     <input matInput name="email" ngModel type="email" #emailInput="ngModel"  placeholder="*Email" required minlength="4">
     <mat-error *ngIf="emailInput.invalid">Please enter a valid and unique Email.</mat-error>
 
   </mat-form-field>
   <mat-form-field>
-    <input matInput name="password" ngModel type="password" placeholder="password" #password="ngModel" required minlength="6" >
+    <input matInput name="password" ngModel type="password" placeholder="*Password" #password="ngModel" required minlength="6" >
     <mat-error *ngIf="password.invalid">Please enter a valid password.</mat-error>
   
   </mat-form-field>
@@ -15,3 +25,6 @@
   
   </form>
 </mat-card>
+</div>
+</body>
+</html>

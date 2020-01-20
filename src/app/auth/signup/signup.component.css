@@ -1,9 +1,34 @@
 mat-form-field {
-    width: 100%;
-  }
-  
-  mat-spinner {
-    margin: auto;
-  }
- 
-  
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+.flex-container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  width: 100%;
+  background-image: ('/../../assets/img/netflix.jpg');
+  margin: 5px;
+ }
+
+
+mat-card {
+display: flex;
+background-color:#b48989;
+justify-content: center;
+align-items: flex-end;
+height: 250px;
+}
+
+button{
+width: 100%;
+}
+h1{
+text-align: center;
+}
+
+
