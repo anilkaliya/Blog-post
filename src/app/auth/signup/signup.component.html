@@ -1,10 +1,18 @@
-<span *ngIf="message.length>0"> {{message}}</span>
+
 <mat-card>
+  <p *ngIf="password_mismatch">
+    {{password_mismatch}}
+  </p>
   <form (submit)="onSignUp(signupForm)" #signupForm="ngForm" >
     <mat-form-field>
     <input matInput name="email" ngModel type="email" #emailInput="ngModel"  placeholder="*Email" required minlength="4">
     <mat-error *ngIf="emailInput.invalid">Please enter a valid and unique Email.</mat-error>
 
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="Confirm_password" ngModel type="password" placeholder="confirm password" #confirmPassword="ngModel" required minlength="6" >
+    <mat-error *ngIf="password_mismatch">Please enter a passwrod to confirm.</mat-error>
+  
   </mat-form-field>
   <mat-form-field>
     <input matInput name="password" ngModel type="password" placeholder="password" #password="ngModel" required minlength="6" >

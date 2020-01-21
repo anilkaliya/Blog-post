@@ -11,6 +11,7 @@ import { DialogComponent } from '../dialog/dialog.component'
 })
 export class SignupComponent implements OnInit {
  private message='';
+ private password_mismatch;
   constructor(private authservice:AuthService,private route:ActivatedRoute,public dialog: MatDialog) {
 
   }
@@ -47,7 +48,12 @@ export class SignupComponent implements OnInit {
     
   }
   onSignUp(form:NgForm){
+    this.password_mismatch='';
     if(form.invalid){
+      return;
+    }
+    else if(form.value.password!==form.value.confirm_password){
+      this.password_mismatch="password doesnt match";
       return;
     }
     this.authservice.SignUp(form.value.email,form.value.password);
