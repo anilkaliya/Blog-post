@@ -21,7 +21,7 @@ mongoose
     console.log("Connected to database!");
   })
   .catch(() => {
-    console.log("Connection failed!");
+    console.log("Connection failed to database");
   });
 
 app.use(bodyParser.json());
