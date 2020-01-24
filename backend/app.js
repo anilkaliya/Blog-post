@@ -21,7 +21,11 @@ mongoose
     console.log("Connected to database!");
   })
   .catch(() => {
+<<<<<<< HEAD
     console.log("Connection failed to database");
+=======
+    console.log("Connection failed!");
+>>>>>>> localhost
   });
 
 app.use(bodyParser.json());

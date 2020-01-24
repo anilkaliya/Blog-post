@@ -34,6 +34,10 @@ private message='';
     if(form.invalid){
       return;
     }
+<<<<<<< HEAD
+   
+=======
+>>>>>>> origin
     this.authService.SignIn(form.value.email,form.value.password);
   }
 

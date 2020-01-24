@@ -25,7 +25,7 @@ export class PostService {
   postData.append("image",imagePath,title);
 
 
-    this.http.post <{message:string} >("http://localhost:3000/api/posts",postData)
+    this.http.post <{message:string} >("/api/posts",postData)
     .subscribe(responseData=>{
       this.router.navigate(['/']);
     });
@@ -33,7 +33,7 @@ export class PostService {
 
   }
   getPosts(){
-    this.http.get<{message:string,posts:any}>("http://localhost:3000/api/posts")
+    this.http.get<{message:string,posts:any}>("/api/posts")
     .pipe(
       map(postData => {
         return {
@@ -61,7 +61,7 @@ export class PostService {
   }
 
   Delete(id:string){
-    return this.http.delete("http://localhost:3000/api/posts/" +id); 
+    return this.http.delete("/api/posts/" +id); 
     
   }
 
@@ -70,7 +70,7 @@ export class PostService {
 console.log(post);
     this.http
 .put
-("http://localhost:3000/api/posts/" + id,post)
+("/api/posts/" + id,post)
 .subscribe(response=>{
   this.router.navigate(['/']);
 });
@@ -83,11 +83,11 @@ console.log(post);
     title:string,
   content:string,
 imagePath:string}>
-  ("http://localhost:3000/api/posts/" +id);
+  ("/api/posts/" +id);
   }
   getList(){
     
-      return this.http.get("http://localhost:3000/api/movies")
+      return this.http.get("/api/movies")
   
 }
 }
