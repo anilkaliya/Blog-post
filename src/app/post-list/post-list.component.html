@@ -1,4 +1,5 @@
-<div class="posts" *ngIf="posts.length > 0 ">
+<div [ngStyle]="{background: 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkktvWaZyRKPwZOXa_R0jDwiy0NDJSg72xmhdMigIda40ynj5C2w&s)'}">
+  <div class="posts" *ngIf="posts.length > 0 ">
   <div class="one-post" *ngFor="let post of posts">
     <div class="title">
     <strong>{{ post.title }}</strong>
@@ -25,6 +26,7 @@
      </div>    
     <div>{{ movie.overview }}</div>
   </div>
+</div>
 </div>
 
 

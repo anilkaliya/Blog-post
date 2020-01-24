@@ -5,28 +5,27 @@ mat-form-field {
   mat-spinner {
     margin: auto;
   }
+
+ /* .full{
+   display: flex;
+   min-height: 550px;
+   align-items: center;
+   justify-content: center;
+ } */
   .flex-container{
     display: flex;
+    flex-wrap: wrap;
+    min-height: 480px;
     justify-content: center;
-    align-items: flex-end;
-    overflow: hidden;
-    width: 100%;
-    margin: 5px;
-    background-image: url('/../../../src/assets/img/netflix.jpg');
-    background-repeat: repeat-y;
-   }
-   /* body{
-   background-image: ('/assets/img/netflix.jpg');
-   height: 100%;
-   background-repeat: repeat-y;
-   } */
+   align-items: center;
+  }
 
  mat-card {
-  display: flex;
-  background-color:#b48989;
-  justify-content: center;
-  align-items: flex-end;
-  height: 250px;
+   display: flex;
+   flex-wrap: wrap;
+   max-height: 250px;
+   justify-content: center;
+   align-items: center;
 }
 
 button{
