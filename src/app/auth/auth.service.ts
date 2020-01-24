@@ -46,17 +46,9 @@ private isAuthListener=new Subject<boolean>();
         this.isAuthListener.next(true);
         this.router.navigate(['/']);
       }
-    //   else if(responseData.message==='Does not exist'){
-    //     this.router.navigate(['auth/signin'],{queryParams:{User:'false'}
-    //     })
-    //   }
-    //   else if( responseData.message==='Password is wrong'){
-    //     this.router.navigate(['auth/signin'],{queryParams:{password:'false'}
-    //   })
-    // }
-      
+ 
     },error=>{
-      // this.router.navigate(['auth/signin']);
+      
     })
   }
   getIsAuth(){
