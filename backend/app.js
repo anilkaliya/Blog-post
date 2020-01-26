@@ -7,6 +7,8 @@ const postsRoutes = require("./routes/posts");
  const userRoutes = require("./routes/users");
 
 const app = express();
+ var distDir = __dirname + "/../dist/";
+ app.use(express.static(distDir));
 // mongoose
 //   .connect("mongodb://localhost:27017/local")
 //   .then(() => {
