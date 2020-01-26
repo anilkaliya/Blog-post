@@ -52,10 +52,7 @@ export class SignupComponent implements OnInit {
     if(form.invalid){
       return;
     }
-    else if(form.value.password!==form.value.confirm_password){
-      this.password_mismatch="password doesnt match";
-      return;
-    }
+ 
     this.authservice.SignUp(form.value.email,form.value.password);
     }
   

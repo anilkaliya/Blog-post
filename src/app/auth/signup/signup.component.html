@@ -9,11 +9,6 @@
     <mat-error *ngIf="emailInput.invalid">Please enter a valid and unique Email.</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <input matInput name="Confirm_password" ngModel type="password" placeholder="confirm password" #confirmPassword="ngModel" required minlength="6" >
-    <mat-error *ngIf="password_mismatch">Please enter a passwrod to confirm.</mat-error>
-  
-  </mat-form-field>
-  <mat-form-field>
     <input matInput name="password" ngModel type="password" placeholder="password" #password="ngModel" required minlength="6" >
     <mat-error *ngIf="password.invalid">Please enter a valid password.</mat-error>
   </mat-form-field>
