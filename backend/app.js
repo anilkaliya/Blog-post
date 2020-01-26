@@ -19,7 +19,9 @@ mongoose
   .connect(process.env.MONGOLAB_CHARCOAL_URI)
   .then(() => {
     console.log("Connected to database!");
-  })
+  }).catch(()=>{
+    console.log("Connection failed!");
+  });
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
