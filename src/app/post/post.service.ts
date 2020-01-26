@@ -32,7 +32,7 @@ export class PostService {
 
   }
   getPosts(){
-    this.http.get<{message:string,posts:any}>("http://localhost:3000/api/posts")
+    this.http.get<{message:string,posts:any}>("/api/posts")
     .pipe(
       map(postData => {
         return {
