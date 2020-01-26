@@ -9,21 +9,23 @@ const postsRoutes = require("./routes/posts");
 const app = express();
  var distDir = __dirname + "/../dist/";
  app.use(express.static(distDir));
-// mongoose
-//   .connect("mongodb://localhost:27017/local")
-//   .then(() => {
-//     console.log("Connected to database!");
-//   })
-//   .catch(() => {
-//     console.log("Connection failed!");
-//   });
+ app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose
-  .connect(process.env.MONGOLAB_CHARCOAL_URI)
+  .connect("mongodb://localhost:27017/local")
   .then(() => {
     console.log("Connected to database!");
-  }).catch(()=>{
+  })
+  .catch(() => {
     console.log("Connection failed!");
   });
+// mongoose
+//   .connect(process.env.MONGOLAB_CHARCOAL_URI)
+//   .then(() => {
+//     console.log("Connected to database!");
+//   }).catch(()=>{
+//     console.log("Connection failed!");
+//   });
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(

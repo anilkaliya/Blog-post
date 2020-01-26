@@ -18,8 +18,10 @@ private isAuthenticated=false;
 private isAuthListener=new Subject<boolean>();
   constructor(private http:HttpClient,private router:Router) { }
   SignUp(email:string,password:string){
+    console.log(password);
     const authData:AuthData={email:email,password:password};
-    this.http.post<{message:string}>( "/api/users/signup" ,authData).
+    console.log(authData);
+    this.http.post<{message:string}>("/api/users/signup",authData).
     subscribe(responseData=>{
       if(responseData.message==='Done'){
         this.router.navigate(['auth/signin'],{queryParams:{registered:'true'}})

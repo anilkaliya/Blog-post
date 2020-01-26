@@ -29,7 +29,8 @@ router.post('/signin',(req,res,next)=>{
     User.findOne({email:req.body.email}).
     then(user=>{
         if(!user){
-            res.status(401).json({message:"User Does not Exist"});        }
+            res.status(401).json({message:"User Does not Exist"});   
+        }
          fetchedUser=user;
         return bcrypt.compare(req.body.password,user.password)
     }).then(result=>{

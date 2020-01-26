@@ -4,7 +4,6 @@ import {Post} from './post.model';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { map } from "rxjs/operators";
-import { environment } from "../../environments/environment.prod";
 
 
 // const BACKEND_URL = environment.apiUrl + "/posts/";
@@ -25,7 +24,7 @@ export class PostService {
   postData.append("image",imagePath,title);
 
 
-    this.http.post <{message:string} >("/api/posts",postData)
+    this.http.post <{message:string}>("/api/posts",postData)
     .subscribe(responseData=>{
       this.router.navigate(['/']);
     });
@@ -33,7 +32,7 @@ export class PostService {
 
   }
   getPosts(){
-    this.http.get<{message:string,posts:any}>("/api/posts")
+    this.http.get<{message:string,posts:any}>("http://localhost:3000/api/posts")
     .pipe(
       map(postData => {
         return {
