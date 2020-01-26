@@ -15,7 +15,7 @@ mat-form-field {
   .flex-container{
     display: flex;
     flex-wrap: wrap;
-    min-height: 550px;
+    min-height: 620px;
     justify-content: center;
    align-items: center;
   }
