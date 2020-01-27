@@ -66,27 +66,23 @@ export class PostService {
 
   editPost(id:string,title:string,content:string,imagePath:string){
     let post: Post = {id:id,title:title,content: content,imagePath:imagePath};
-console.log(post);
     this.http
-.put
-("/api/posts/" + id,post)
-.subscribe(response=>{
-  this.router.navigate(['/']);
-});
-
+    .put("/api/posts/" + id,post)
+    .subscribe(response=>{
+      this.router.navigate(['/']);
+    });
   }
 
   getPost(id:string){
     return this.http.get
     <{_id:string,
     title:string,
-  content:string,
-imagePath:string}>
-  ("/api/posts/" +id);
+    content:string,
+    imagePath:string}>
+    ("/api/posts/" +id);
   }
-  getList(){
-    
-      return this.http.get("/api/movies")
   
-}
+  getList(){
+     return this.http.get("/api/movies")
+    }
 }
