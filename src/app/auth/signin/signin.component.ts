@@ -11,11 +11,13 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class SigninComponent implements OnInit {
 private message='';
+inProgress=false;
   constructor(private authService:AuthService,private route:ActivatedRoute,public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.inProgress=true;
     this.route.queryParams.subscribe(params=>{
-      console.log(params);
+      this.inProgress=false;
       if(params.registered!==undefined && params.registered==='true'){
         this.message="You have registered !! Please proceed to signin";
         const dialogRef = this.dialog.open(DialogComponent, {
@@ -24,6 +26,7 @@ private message='';
         });
     
         dialogRef.afterClosed().subscribe(result => {
+          this.inProgress=false;
           console.log('The dialog was closed');
          
         });
@@ -34,6 +37,8 @@ private message='';
     if(form.invalid){
       return;
     }
+    this.inProgress=true;
+
     this.authService.SignIn(form.value.email,form.value.password);
   }
 

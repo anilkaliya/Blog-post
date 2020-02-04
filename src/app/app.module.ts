@@ -21,7 +21,7 @@ import { ErrorInterceptor } from './error-interceptors';
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
-	  PostModule,
+    PostModule,
 	  AppRoutingModule
 ],
   providers: [

@@ -17,21 +17,24 @@ export class PostListComponent implements OnInit {
  authSub:Subscription;
  private imageUrl="http://image.tmdb.org/t/p/w300";
   constructor(private postService:PostService,private authService:AuthService) { }
-
+ inProgress=false;
   ngOnInit() {
-    this.postService.getPosts();
-    this.postService.getList().subscribe(data=>{
-      this.movieArray=data;
+     this.inProgress=true;
+     console.log(this.inProgress);
+     this.postService.getPosts();
+     this.postService.getList().subscribe(data=>{
+     this.movieArray=data;
+
     })
-     
     
     this.postSub=this.postService.getPostUpdateListener().
     subscribe(postData=>{
+      this.inProgress=false;
       this.posts=postData.posts;
 
     });
     this.isAuthenticated=this.authService.getIsAuth();
-   this.authSub= this.authService.getIsAuthListener().subscribe(isAuthenticated=>{
+    this.authSub= this.authService.getIsAuthListener().subscribe(isAuthenticated=>{
       this.isAuthenticated=isAuthenticated;
     });
 

@@ -19,6 +19,7 @@ const app = express();
 //   .catch(() => {
 //     console.log("Connection failed!");
 //   });
+
 mongoose
   .connect(process.env.MONGOLAB_CHARCOAL_URI)
   .then(() => {
@@ -26,6 +27,8 @@ mongoose
   }).catch(()=>{
     console.log("Connection failed!");
   });
+
+
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(

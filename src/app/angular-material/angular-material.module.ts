@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import { DialogComponent } from '../auth/dialog/dialog.component';
 
+
 import {
   MatInputModule,
   MatCardModule,
@@ -11,6 +12,7 @@ import {
   MatExpansionModule,
   MatSidenavModule,
   MatFormFieldModule, 
+  MatProgressSpinnerModule
 
 } from "@angular/material";
 
@@ -28,7 +30,8 @@ import {
     MatExpansionModule,
     MatSidenavModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
 
   ],
   entryComponents: [

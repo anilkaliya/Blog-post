@@ -4,6 +4,9 @@ import {Post} from './post.model';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { map } from "rxjs/operators";
+import { __spread } from 'tslib';
+
+
 
 
 // const BACKEND_URL = environment.apiUrl + "/posts/";
@@ -15,7 +18,9 @@ import { map } from "rxjs/operators";
 })
 export class PostService {
  private posts:Post[]=[];
+ private imageurl;
  private postUpdateListener=new Subject<{posts:Post[]}>();
+
   constructor(private http:HttpClient,private router:Router) { }
   createPost(title:string,content:string,imagePath:string){
   const postData=new FormData();
@@ -37,13 +42,11 @@ export class PostService {
       map(postData => {
         return {
           posts: postData.posts.map(post => {
-            return {id:post._id,
-              title: post.title,
-              content: post.content,
-              imagePath:post.imagePath,
-              
-            
-            };
+                  return {id:post._id,
+                   title: post.title,
+                  content: post.content,
+                  imagePath:'data:image/png;base64,' + post.imagePath,
+                 };
           }),
        
         };

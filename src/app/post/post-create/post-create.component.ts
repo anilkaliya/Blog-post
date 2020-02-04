@@ -22,10 +22,8 @@ form:FormGroup;
     this.form =new FormGroup({
       title:new FormControl(null,{validators:[Validators.required,Validators.minLength(4)]}),
       content:new FormControl(null,{validators:[Validators.required, Validators.minLength(10)]}),
-      image:new FormControl(null,{validators:[Validators.required, Validators.minLength(10)], asyncValidators: [mimeType]}
-
-    
-      )
+      image:new FormControl(null,{validators:[Validators.required, Validators.minLength(10)], asyncValidators: [mimeType]
+      })
     });
 
 this.route.paramMap.subscribe((paramMap:ParamMap)=>{
@@ -39,10 +37,7 @@ this.route.paramMap.subscribe((paramMap:ParamMap)=>{
         title:postData.title,
         content:postData.content,
         imagePath:postData.imagePath
-
-      };
-
-    
+      }; 
     this.form.setValue({
       title:this.post.title,
       content:this.post.content,
@@ -51,31 +46,27 @@ this.route.paramMap.subscribe((paramMap:ParamMap)=>{
   });
 
   }
-
-  else {
+else {
     this.mode = "create";
     this.postId = null;
   }
-});
+})
   }
 onAddPost(){
   if(this.form.invalid){
     return ;
   }
-  console.log(this.mode);
-  console.log(this.form.value.image);
   if(this.mode==="create"){
-this.postService.createPost
-(this.form.value.title,this.form.value.content,this.form.value.image);
+    this.postService.createPost
+    (this.form.value.title,this.form.value.content,this.form.value.image);
   }
   else{
-  this.postService.editPost(this.postId,
+    this.postService.editPost(this.postId,
     this.form.value.title,
     this.form.value.content,
     this.form.value.image);
-
-}
-this.form.reset();
+  }
+  this.form.reset();
 }
 
 onImagePicked(event:Event){
@@ -84,7 +75,7 @@ onImagePicked(event:Event){
   this.form.get("image").updateValueAndValidity();
   const reader=new FileReader();
   reader.onload=()=>{
-this.imagePreview=reader.result as string;
+    this.imagePreview=reader.result as string;
   }
   reader.readAsDataURL(file);
 }

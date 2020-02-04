@@ -18,9 +18,7 @@ private isAuthenticated=false;
 private isAuthListener=new Subject<boolean>();
   constructor(private http:HttpClient,private router:Router) { }
   SignUp(email:string,password:string){
-    console.log(password);
     const authData:AuthData={email:email,password:password};
-    console.log(authData);
     this.http.post<{message:string}>("/api/users/signup",authData).
     subscribe(responseData=>{
       if(responseData.message==='Done'){
@@ -37,7 +35,6 @@ private isAuthListener=new Subject<boolean>();
     this.http.post<{message:String,token:string,expiresIn:string}>
     ("/api/users/signin",authData)
     .subscribe(responseData=>{
-      console.log(responseData);
       const token=responseData.token;
       this.token=token;
       

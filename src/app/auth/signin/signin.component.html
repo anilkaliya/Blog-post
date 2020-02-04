@@ -7,6 +7,8 @@
 <div class="flex-container" [ngStyle]="{background: 'url(https://coolbackgrounds.io/images/unsplash/anders-jilden-medium-5d01610e.jpg)'}">
 <mat-card>
   <form (submit)="onSignIn(signinForm)" #signinForm="ngForm" >
+    <mat-spinner *ngIf="inProgress"></mat-spinner>
+
     <h1> Sign In
     </h1>
     <mat-form-field>

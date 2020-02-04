@@ -16,7 +16,7 @@ mat-spinner {
 mat-card {
  display: flex;
  flex-wrap: wrap;
- max-height: 250px;
+ max-height: 450px;
  justify-content: center;
  align-items: center;
 }
